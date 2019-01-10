@@ -31,7 +31,7 @@ boolean pause = true;
 
 
 void setup() {
-  size (600, 480); 
+  size (640, 480); 
   Nx = width / cellSize;
   Ny = height / cellSize;
   println("Nx, Ny = ", Nx, Ny);
@@ -49,15 +49,20 @@ void setup() {
   // Initialization
   for (int i=1; i<Nx-1; i++) {
     for (int j=1; j<Ny-1; j++) {
-      if (i==Nx/2 && j==Ny/2)
-        cells[i][j] = 1;
-      else
-        cells[i][j] = 0;
+      float state = random (100);
+      if (state > probabilityOfAliveAtStart) { 
+        state = 0;
+      } else {
+        state = 1;
+      }
+      cells[i][j] = int(state); // Save state of each cell
     }
   }
 
   boundaryCondition();
   copyCells();
+
+  //background(210, 220, 250);
 }
 
 
