@@ -13,9 +13,9 @@ void stepTime() {
         }
       }
       if (cellsCarbonCopy[i][j]==1) { // The cell is alive.
-        if ( cellsCarbonCopy[i-1][j-1]==0 ) cells[i][j]=0;
+        if ( neighbours<=1 || neighbours>=4) cells[i][j]=0;
       } else { // The cell is dead.
-        if ( cellsCarbonCopy[i-1][j-1]==1 ) cells[i][j]=1;
+        if ( neighbours==3 ) cells[i][j]=1;
       }
     }
   }
